@@ -1,0 +1,27 @@
+#Ignore .pyc compiled files, they don't belong in the repo
+*.pyc
+
+#Ignore the Python virtual environment folder
+venv/
+myvenv/
+
+
+#Django ignores
+*local_settings.py*
+media/
+temp/
+
+#Eclipse ignores
+*__credentials.py
+.project
+.pydevproject
+
+#VSCode ignores
+.vscode/
+
+#Pycharm ignores
+.idea/
+
+db.sqlite3
+*.whl
+*.csv
