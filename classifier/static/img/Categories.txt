@@ -1,0 +1,10 @@
+[00-09] aeroplane 
+[10-19] car
+[20-29] bird
+[30-39] cat
+[40-49] deer
+[50-59] dog
+[60-69] frog
+[70-79] horse
+[80-89] ship
+[90-99] fish

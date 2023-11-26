@@ -22,6 +22,8 @@ COLOR_TYPE = [
     (5, 'Blue'),
     (6, 'Indigo'),
     (7, 'Violet'),
+    (8, 'Black'),
+    (9, 'White'),
 ]
 
 
@@ -41,7 +43,8 @@ class Category(models.Model):
 
 
 class Map(models.Model):
-    image_path = models.ForeignKey(Image, on_delete=models.CASCADE)
+    id = models.ForeignKey(Image, on_delete=models.CASCADE, primary_key=True)
     color = models.ForeignKey(Color,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    
 

@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #imageContainer {
+            display: none;
+        }
+
+        .image {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Title</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div>
+                Image-based
+                <button onclick="resultGenerate();">Show Results</button>
+                <div id="imageContainer"></div>
+            </div>
+            <div>Text-based</div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/back.js' %}"></script>
+
+</body>
+</html>
