@@ -31,11 +31,57 @@
                 <button onclick="resultGenerate();">Show Results</button>
                 <div id="imageContainer"></div>
             </div>
-            <div>Text-based</div>
+            <div id="predicted-category">Nothing now...</div>
         </div>
     </div>
 
-    <script src="{% static 'js/back.js' %}"></script>
+    {% if image_path %}
+        <!-- <img src="{{ image_path }}" alt="Image"> -->
+        <p>{{ image_path }}</p>
+    {% else %}
+        <p>No image available</p>
+    {% endif %}
+
+    {% for image in results %}
+        <div>
+            <img src="{{ image }}" alt="{{ image_path }}">
+        </div>
+    {% endfor %}
+
+    <script>
+        
+        // src="{% static 'js/back.js' %}">
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const predictedCategory = urlParams.get('predicted_category');
+
+        // Update the content of the 'predicted-category' div
+        document.getElementById('predicted-category').innerText = predictedCategory || 'No category prediction available';
+
+        ///
+
+        function resultGenerate() {
+            console.log("Hey!");
+
+            var container = document.getElementById("imageContainer");
+
+                // Create and display the div
+                container.style.display = "block";
+
+                // Create and append 5 images to the div
+                for (var i = 1; i <= 5; i++) {
+                    var image = document.createElement("img");
+
+                    var j = Math.floor(Math.random() * 100);
+                    var path_src = (j >= 0 && j <= 9) ? "0" + j + ".jpg" : j + ".jpg";
+                    //image.src = "{% static path_src %}";
+                    image.src = "../static/img/" + path_src;
+                    image.alt = "Image_0 " + i;
+                    image.classList.add("image");
+                    container.appendChild(image);
+                }
+        }
+    </script>
 
 </body>
 </html>
