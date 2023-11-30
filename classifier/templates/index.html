@@ -35,18 +35,11 @@
         </div>
     </div>
 
-    {% if image_path %}
-        <!-- <img src="{{ image_path }}" alt="Image"> -->
-        <p>{{ image_path }}</p>
-    {% else %}
-        <p>No image available</p>
-    {% endif %}
-
-    {% for image in results %}
-        <div>
-            <img src="{{ image }}" alt="{{ image_path }}">
-        </div>
-    {% endfor %}
+    <div style="display: flexbox;">
+        {% for image in results %}
+                <img src="{{ image }}" alt="{{ image_path }}" style="fon">
+        {% endfor %}
+    </div>
 
     <script>
         
@@ -54,9 +47,27 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const predictedCategory = urlParams.get('predicted_category');
+        CATEGORY_TYPE = [
+            [1, 'AIRPLANE'],
+            [2, 'CAR'],
+            [3, 'BIRD'],
+            [4, 'CAT'],
+            [5, 'DEER'],
+            [6, 'DOG'],
+            [7, 'FROG'],
+            [8, 'HORSE'],
+            [9, 'SHIP'],
+            [10, 'FISH'],
+        ]
+
+        const predictedCategoryNumber = parseInt(predictedCategory);
+        const getCategoryName = predictedValue => (CATEGORY_TYPE.find(([categoryNumber]) => predictedValue === categoryNumber));
+        category_name = getCategoryName(predictedCategoryNumber)[1];
+
+
 
         // Update the content of the 'predicted-category' div
-        document.getElementById('predicted-category').innerText = predictedCategory || 'No category prediction available';
+        document.getElementById('predicted-category').innerHTML = ("Showing results for the predicted category: <strong>" + category_name + "</strong>") || 'No category prediction available';
 
         ///
 

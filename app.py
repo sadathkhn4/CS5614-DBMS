@@ -94,7 +94,7 @@ else:
         # Predict class for the uploaded image
         prediction = model.predict(img_array)
         predicted_class = np.argmax(prediction)
-        class_name = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
+        class_name = ["aeroplane", "car", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "fish"]
         predicted_label = class_name[predicted_class]
 
         st.write(f"Predicted Class: {predicted_label}")

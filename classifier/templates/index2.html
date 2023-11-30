@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header-container {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #imageContainer {
+            display: none;
+            margin-top: 20px;
+            max-width: 350px;
+        }
+
+        .image {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        #predicted-category {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Title</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div id="predicted-category">Nothing now...</div>
+            <div>
+
+                <div id="imageContainer">
+                    {% for image in results %}
+                        <img src="{{ image }}" alt="{{ image_path }}" class="image">
+                    {% endfor %}
+                </div>
+                <button onclick="resultGenerate();">Show Results</button>
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- <div style="display: flexbox;">
+        {% for image in results %}
+            <img src="{{ image }}" alt="{{ image_path }}" class="image">
+        {% endfor %}
+    </div> -->
+
+    <script>
+        // Your JavaScript code here
+        const urlParams = new URLSearchParams(window.location.search);
+        const predictedCategory = urlParams.get('predicted_category');
+        CATEGORY_TYPE = [
+            [1, 'AIRPLANE'],
+            [2, 'CAR'],
+            [3, 'BIRD'],
+            [4, 'CAT'],
+            [5, 'DEER'],
+            [6, 'DOG'],
+            [7, 'FROG'],
+            [8, 'HORSE'],
+            [9, 'SHIP'],
+            [10, 'FISH'],
+        ]
+
+        const predictedCategoryNumber = parseInt(predictedCategory);
+        const getCategoryName = predictedValue => (CATEGORY_TYPE.find(([categoryNumber]) => predictedValue === categoryNumber));
+        category_name = getCategoryName(predictedCategoryNumber)[1];
+
+
+
+        // Update the content of the 'predicted-category' div
+        document.getElementById('predicted-category').innerHTML = ("Showing results for the predicted category: <strong>" + category_name + "</strong>") || 'No category prediction available';
+
+        ///
+
+        function resultGenerate() {
+            console.log("Hey!");
+
+            var container = document.getElementById("imageContainer");
+
+                //Create and display the div
+                container.style.display = "block";
+
+                // Create and append 5 images to the div
+                // for (var i = 1; i <= 5; i++) {
+                //     var image = document.createElement("img");
+
+                //     var j = Math.floor(Math.random() * 100);
+                //     var path_src = (j >= 0 && j <= 9) ? "0" + j + ".jpg" : j + ".jpg";
+                //     //image.src = "{% static path_src %}";
+                //     image.src = "../static/img/" + path_src;
+                //     image.alt = "Image_0 " + i;
+                //     image.classList.add("image");
+                //     container.appendChild(image);
+                // }
+        }
+    </script>
+</body>
+</html>

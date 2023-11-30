@@ -48,6 +48,6 @@ def index(request):
             random_5_images_cat  = [results[i] for i in random.sample(range(len(results)), min(5, len(results)))]
                 
         
-        return render(request, 'index.html', {'results': random_5_images_cat})
+        return render(request, 'index2.html', {'results': random_5_images_cat})
     else:
         return HttpResponse("Invalid image_number provided in the URL.")
