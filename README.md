@@ -1,5 +1,4 @@
 # CS5614-DBMS
 Compressed Image storage in Database application.
 
-
-Testing readme functionality
+This project is done as a part of CS5614 course.
