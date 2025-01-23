@@ -1,2 +1,5 @@
 # CS5614-DBMS
-Compressed Image storage in Database web application.
+Compressed Image storage in Database application.
+
+
+Testing readme functionality
